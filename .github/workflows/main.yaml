@@ -82,9 +82,21 @@ jobs:
         run: |
           docker pull ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
+
+      - name: Remove existing container
+        run: |
+          docker rm -f cnncls || true
+
+
       - name: Run Docker Image to serve users
         run: |
-          docker run -d -p 8080:8080 --name=cnncls -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}'
+          docker run -d \
+            -p 8080:8080 \
+            --name cnncls \
+            -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+            -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+            cnncls:latest
+
 
       - name: Clean previous images and containers
         run: |
