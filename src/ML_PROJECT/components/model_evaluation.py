@@ -26,7 +26,7 @@ class ModelEvaluation:
     # Set your credentials here or load from config
     os.environ['MLFLOW_TRACKING_URI'] = 'https://dagshub.com/prajwal121/MLOPS_Project.mlflow'
     os.environ['MLFLOW_TRACKING_USERNAME'] = 'Prajwal121'
-    os.environ['MLFLOW_TRACKING_PASSWORD'] = '40f184a0160807abbc644867a5b9a57d7f8a4260'
+    os.environ['MLFLOW_TRACKING_PASSWORD'] = 'MLFLOW TOKEN'
 
 
     def log_into_mlflow(self):
